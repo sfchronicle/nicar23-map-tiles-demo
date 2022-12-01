@@ -1,0 +1,7 @@
+FROM ghcr.io/onthegomap/planetiler:latest
+
+ENV JAVA_TOOL_OPTIONS="-Xmx30g -XX:MaxHeapFreeRatio=40"
+
+VOLUME ["$(pwd)/planet":/data]
+
+CMD ["--area=planet", "--mbtiles=planet.mbtiles", "--bounds=planet", "--osm_path=data/sources/planet.osm.pbf"]
