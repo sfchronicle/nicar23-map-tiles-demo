@@ -21,6 +21,10 @@ RUN export JAVA_HOME
 # Prep wget for getting Planetiler
 RUN apt-get install -y wget
 
+# Move pre-packaged data onto volume
+ADD mbtiles /data
+ADD tileserver.config /config.json
+
 ADD bootstrap.sh /bootstrap.sh
 RUN chmod +x /bootstrap.sh
 ENTRYPOINT ["/bootstrap.sh"]
