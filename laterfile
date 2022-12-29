@@ -1,7 +1,35 @@
-FROM ghcr.io/onthegomap/planetiler:latest
+FROM maptiler/tileserver-gl
+ENV PORT "8080"
+USER root
 
-ENV JAVA_TOOL_OPTIONS="-Xmx30g -XX:MaxHeapFreeRatio=40"
+RUN apt-get update
+# RUN apt-get install -y curl
+# RUN curl -sL https://deb.nodesource.com/setup_16.x | bash
+# RUN apt-get install -y nodejs
+# RUN npm install -g tileserver-gl
 
-VOLUME ["$(pwd)/planet":/data]
+# Install OpenJDK-17
+RUN apt update && \
+    apt-get install -y openjdk-17-jdk && \
+    apt-get install -y ant && \
+    apt-get clean;
 
-CMD ["--area=planet", "--mbtiles=planet.mbtiles", "--bounds=planet", "--osm_path=data/sources/planet.osm.pbf"]
+# Set JAVA_HOME
+ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk-amd64/
+RUN export JAVA_HOME
+
+# Prep wget for getting Planetiler
+RUN apt-get install -y wget
+
+# Install nginx
+RUN apt-get install -y nginx
+COPY nginx.config /etc/nginx/sites-available/default
+COPY index.html /index.html
+EXPOSE 80
+EXPOSE 443
+
+ADD bootstrap.sh /bootstrap.sh
+RUN chmod +x /bootstrap.sh
+ENTRYPOINT ["/bootstrap.sh"]
+# CMD ["/data/tennessee.mbtiles"]
+
