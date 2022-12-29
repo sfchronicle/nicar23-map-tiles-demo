@@ -1,6 +1,6 @@
-# fly.toml file generated for devhub-flytest on 2022-11-30T17:01:18-08:00
+# fly.toml file generated for nicar23-map-tiles on 2022-12-29T14:12:51-08:00
 
-app = "devhub-flytest"
+app = "nicar23-map-tiles"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []

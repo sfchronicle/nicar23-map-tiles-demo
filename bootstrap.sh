@@ -15,8 +15,8 @@ if [ ! -f "/data/$location.mbtiles" ];then
 fi
 # Run tileserver-gl with the output file
 echo "SERVING MBTILES"
-/usr/src/app/docker-entrypoint.sh --config /config.json
-#/usr/src/app/docker-entrypoint.sh --mbtiles "/data/$location.mbtiles"
+#/usr/src/app/docker-entrypoint.sh --config /config.json
+/usr/src/app/docker-entrypoint.sh --mbtiles "/data/$location.mbtiles"
 # echo "RUNNING NGINX3"
 # nginx -c /etc/nginx/sites-available/default -g 'daemon off;'
 # echo "NGINX RAN"
