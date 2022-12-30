@@ -4,7 +4,7 @@
 
 ## Tile generation steps (for Mac OS)
 
-1. Clone this directory to a local folder, `cd` into it
+1. Clone this repo to a local folder, `cd` into it
 1. Install flyctl like so: `brew install flyctl`
 1. Connect to an account: `fly auth signup`
 1. Start the launch (but don't deploy yet): `fly launch`

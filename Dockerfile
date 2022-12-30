@@ -22,7 +22,8 @@ RUN export JAVA_HOME
 RUN apt-get install -y wget
 
 # Move pre-packaged data onto volume
-ADD mbtiles /data
+ADD mbtiles /mbtiles
+ADD styles /styles
 ADD tileserver.config /config.json
 
 ADD bootstrap.sh /bootstrap.sh
