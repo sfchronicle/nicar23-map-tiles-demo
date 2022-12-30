@@ -24,7 +24,8 @@ RUN apt-get install -y wget
 # Move pre-packaged data onto volume
 ADD mbtiles /mbtiles
 ADD styles /styles
-ADD tileserver.config /config.json
+#ADD tileserver.config /config.json
+ADD createconfig.js /createconfig.js
 
 ADD bootstrap.sh /bootstrap.sh
 RUN chmod +x /bootstrap.sh

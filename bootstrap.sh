@@ -15,8 +15,10 @@ if [ ! -f "/data/$location.mbtiles" ];then
 fi
 # Run tileserver-gl with the output file
 echo "SERVING MBTILES"
-# Make sure we're in the data folder
+# Make sure we're in the main folder
 cd /
+# Create the config to serve all mbtiles and styles
+node createconfig.js $location
 #/usr/src/app/docker-entrypoint.sh --config /config.json
 #/usr/src/app/docker-entrypoint.sh --mbtiles "/data/$location.mbtiles"
 /usr/src/app/docker-entrypoint.sh

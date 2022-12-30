@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "name": "Pale North America",
+  "name": "Green Tennessee",
   "metadata": {"maputnik:renderer": "mbgljs"},
   "center": [-122.26406952238165, 37.85440370582789],
   "zoom": 12.492938906884522,
@@ -9,10 +9,10 @@
   "sources": {
     "sfc": {
       "type": "vector",
-      "url": "https://nicar23-map-tiles.fly.dev/data/v3.json"
+      "url": "https://nicar23-map-tiles.fly.dev/data/tennessee.json"
     }
   },
-  "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=P8rZErDes5dOqkWvRTgS",
+  "glyphs": "http://fonts.openmaptiles.org/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
