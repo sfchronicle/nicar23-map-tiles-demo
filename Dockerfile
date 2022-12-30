@@ -2,11 +2,8 @@ FROM maptiler/tileserver-gl
 ENV PORT "8080"
 USER root
 
+# Update packages
 RUN apt-get update
-# RUN apt-get install -y curl
-# RUN curl -sL https://deb.nodesource.com/setup_16.x | bash
-# RUN apt-get install -y nodejs
-# RUN npm install -g tileserver-gl
 
 # Install OpenJDK-17
 RUN apt update && \
@@ -24,11 +21,10 @@ RUN apt-get install -y wget
 # Move pre-packaged data onto volume
 ADD mbtiles /mbtiles
 ADD styles /styles
-#ADD tileserver.config /config.json
 ADD createconfig.js /createconfig.js
 
+# Run custom startup script
 ADD bootstrap.sh /bootstrap.sh
 RUN chmod +x /bootstrap.sh
 ENTRYPOINT ["/bootstrap.sh"]
-# CMD ["/data/tennessee.mbtiles"]
 

@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # Set location (must be a valid geofabrik location -> https://download.geofabrik.de/)
+# Use "planet" to generate tiles of the whole world but make sure you have 85 GB of drive storage and a powerful CPU first!
 location="tennessee"
 
 # Get Planetiler file (if we don't have it)
@@ -19,9 +20,5 @@ echo "SERVING MBTILES"
 cd /
 # Create the config to serve all mbtiles and styles
 node createconfig.js $location
-#/usr/src/app/docker-entrypoint.sh --config /config.json
-#/usr/src/app/docker-entrypoint.sh --mbtiles "/data/$location.mbtiles"
+# Start tileservergl
 /usr/src/app/docker-entrypoint.sh
-# echo "RUNNING NGINX3"
-# nginx -c /etc/nginx/sites-available/default -g 'daemon off;'
-# echo "NGINX RAN"

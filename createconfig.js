@@ -4,7 +4,6 @@ const fs = require('fs')
 // Accept arg so we can target the Plantiler-created tileset
 const args = process.argv.slice(2)
 const location = args[0]
-console.log("location", location)
 
 // Prep final config
 const exportData = {
@@ -21,13 +20,12 @@ function fileLoop(type) {
   const dir = fs.readdirSync(path)
   console.log(dir)
   for (const dirent of dir) {
-    console.log("HEYOOOO", type, dirent)
     if (dirent[0] === "."){ // DO NOT include .DS_Store
       continue
     }
     if (type === "styles"){
-      exportData["styles"][dirent] = {
-        "style": `/styles/${dirent}/style.json`
+      exportData["styles"][dirent.replace(".json", "")] = {
+        "style": `/styles/${dirent}`
       }
     }
     if (type === "mbtiles"){
@@ -43,6 +41,4 @@ fileLoop("mbtiles")
 fileLoop("styles")
 
 // Write config file
-fs.writeFileSync('/config.json', JSON.stringify(exportData));
-
-console.log("exportData", exportData)
+fs.writeFileSync('/config.json', JSON.stringify(exportData))
