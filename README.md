@@ -22,7 +22,7 @@ Simon Willison also [has instructions for this](https://til.simonwillison.net/fl
 1. From the project's working directory (pwd), run `fly ssh issue --agent`, enter your details.
 1. In a new terminal tab (still in pwd): `fly proxy 10022:22`
 1. In original terminal tab: `fly ssh console`
-1. Inside the console, run `apt-get update && apt-get install openssh-client -y && exit`
+1. Inside the console, run `apt-get update && apt-get install openssh-client -y && exit` (if you see `exec: "scp": executable file not found in $PATH` as an error, that means you need to run this line again)
 1. Now, from your local, run `scp -P 10022 root@localhost:/data/tennessee.mbtiles ~/tennessee.mbtiles` (replace tennessee with the actual name of your tiles)
 
 The .mbtiles file should now exist in the location you told it to download to.

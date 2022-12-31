@@ -42,7 +42,7 @@ function fileLoop(type) {
           "mbtiles": `/mbtiles/${dirent}`
         }
       }
-      if (type === "volume"){
+      if (type === "volume"){ // These files will only exist if they have been scp'd into the volume separately
         exportData["data"][dirent.replace(".mbtiles", "")] = {
           "mbtiles": `/data/mbtiles/${dirent}`
         }
@@ -57,7 +57,6 @@ function fileLoop(type) {
 fileLoop("styles")
 fileLoop("mbtiles")
 fileLoop("volume") // Special check to see if there are any mbtiles already on the volume
-
 console.log("EXPORTDATA", exportData)
 
 // Write config file
