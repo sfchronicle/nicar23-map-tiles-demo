@@ -23,4 +23,47 @@ Simon Willison also [has instructions for this](https://til.simonwillison.net/fl
 1. In a new terminal tab (still in pwd): `fly proxy 10022:22`
 1. In original terminal tab: `fly ssh console`
 1. Inside the console, run `apt-get update && apt-get install openssh-client -y && exit`
-1. Now, from your local, run `scp -P 10022 root@localhost:/data/tennessee.mbtiles ~/tennessee.mbtiles` (replace with the actual name of your tiles)
+1. Now, from your local, run `scp -P 10022 root@localhost:/data/tennessee.mbtiles ~/tennessee.mbtiles` (replace tennessee with the actual name of your tiles)
+
+The .mbtiles file should now exist in the location you told it to download to.
+
+## Convert large data files to servable mbtiles using Tippecanoe
+
+1. Install Tippecanoe using `brew install tippecanoe`
+1. Run using `tippecanoe -z14 --drop-densest-as-needed --base-zoom=14 -o tn_county_sub_tiger.mbtiles tn_county_sub_tiger.geojson --force`
+
+`-z14` is usually sufficient, but if you want to get really granular you can go `-z16` -- this will increase the size of the .mbtiles file substantially but it won't mean a bigger download for our readers! That's ~ tile magic ~ (really it's just because readers only download what they zoom to).
+
+Important note: Whatever your "output" name is in the tippecanoe function above, that will be your "source-layer" when including the data using Maplibre. Avoid hyphens, spaces and underscores since these will be removed. 
+
+```
+map.addSource('example-source', {
+  'type': 'vector',
+  'tiles': [
+    'https://nicar23-map-tiles.fly.dev/data/tn_county_sub_tiger/{z}/{x}/{y}.pbf'
+  ]
+})
+map.addLayer(
+  {
+    'id': 'example-layer',
+    'type': 'vector',
+    'source': 'example-source',
+    'source-layer': 'tn_county_sub_tiger', // NOTE: This must match your uploaded source Layer ID exactly
+    'type': 'fill',
+    'paint': {
+      'fill-color': '#00ffff',
+      'fill-opacity': 1
+    }
+  },
+  'admin_sub' // Use this to specify what layer this one should order under
+)
+```
+
+## What happens when /mbtiles exceeds 8GB?
+
+The starter Fly.io volume that the Docker container loads on currently has 8GB of available space. This is different from the persistent storage volume. Theoretically, if the contents of the /mbtiles folder were to exceed 8GB, the deploy would fail. Since data sets can be large, this could easily happen.
+
+If you use this setup for the long run, it would be good practice to `scp` your mbtiles directly onto persistent storage which can be expanded to be as large as you need. For that, you'll want to do the reverse of the process outlined in `Getting tiles off of Fly.io and onto your computer` section above. These instructions assume you have already issued a certificate and installed `openssh-client` from that section.
+
+1. In a new terminal tab (still in your project working directory): `fly proxy 10022:22`
+1. In original terminal tab: `scp -P 10022 ~/tennessee.mbtiles root@localhost:/data/mbtiles/tennessee.mbtiles` (replace tennessee with the actual name of your tiles)
