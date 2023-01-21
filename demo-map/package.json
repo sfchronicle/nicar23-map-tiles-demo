@@ -1,0 +1,36 @@
+{
+  "name": "nicar-23-demo-page",
+  "description": "Hearst interactive project",
+  "version": "1.0.0",
+  "author": "ewagstaff",
+  "dependencies": {
+    "gatsby": "^3.3.1",
+    "maplibre-gl": "^2.4.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "browserslist": [
+    "Chrome >= 61",
+    "ChromeAndroid >= 80",
+    "Safari >= 11",
+    "iOS >= 11",
+    "Firefox >= 60",
+    "FirefoxAndroid >= 68",
+    "Edge >= 16",
+    "Opera >= 48",
+    "Android >= 80",
+    "Samsung >= 8.2"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "dev": "gatsby develop -H 0.0.0.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  }
+}

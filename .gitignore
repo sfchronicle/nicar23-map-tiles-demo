@@ -1,1 +1,4 @@
 .DS_Store
+demo-map/node_modules
+demo-map/public
+demo-map/.cache
