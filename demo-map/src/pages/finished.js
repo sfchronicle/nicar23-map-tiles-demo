@@ -28,7 +28,7 @@ const IndexPage = () => {
         'type': 'line',
         'layout': {},
         'paint': {
-          'line-color': 'papayawhip',
+          'line-color': 'red',
           'line-width': 2,
           'line-dasharray': [2, 2]
         }
