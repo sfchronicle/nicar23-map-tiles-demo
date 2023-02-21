@@ -34,7 +34,7 @@ The .mbtiles file should now exist in the location you told it to download to.
 
 `-z14` is usually sufficient, but if you want to get really granular you can go `-z16` -- this will increase the size of the .mbtiles file substantially but it won't mean a bigger download for our readers! That's ~ tile magic ~ (really it's just because readers only download what they zoom to).
 
-Important note: Whatever your "output" name is in the tippecanoe function above, that will be your "source-layer" when including the data using Maplibre. Avoid hyphens, spaces and underscores since these will be removed. 
+Important note: Whatever your "output" name is in the tippecanoe function above, that will be your "source-layer" when including the data using Maplibre. Avoid hyphens and spaces since these will be removed. 
 
 ```
 map.addSource('example-source', {
