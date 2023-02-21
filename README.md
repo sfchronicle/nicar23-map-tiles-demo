@@ -65,6 +65,6 @@ The starter Fly.io volume that the Docker container loads on currently has 8GB o
 
 If you use this setup for the long run, it would be good practice to `scp` your mbtiles directly onto persistent storage which can be expanded to be as large as you need. For that, you'll want to do the reverse of the process outlined in `Getting tiles off of Fly.io and onto your computer` section above. These instructions assume you have already issued a certificate and installed `openssh-client` from that section.
 
-1. Use the terminal to (extend your persistent volume)[https://fly.io/docs/flyctl/volumes-extend/] to whatever new size you need to accommodate the new files
+1. Use the terminal to [extend your persistent volume](https://fly.io/docs/flyctl/volumes-extend/) to whatever new size you need to accommodate the new files
 1. In a new terminal tab (still in your project working directory): `fly proxy 10022:22`
 1. In original terminal tab: `scp -P 10022 ~/tennessee.mbtiles root@localhost:/data/mbtiles/tennessee.mbtiles` (replace tennessee with the actual name of your tiles)
