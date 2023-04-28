@@ -1,3 +1,4 @@
+// @refresh reset
 import React, {useEffect} from 'react'
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'

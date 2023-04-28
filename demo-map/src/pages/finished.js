@@ -26,7 +26,6 @@ const IndexPage = () => {
         'source': 'subcounty',
         'source-layer': 'tn_county_sub_tiger',
         'type': 'line',
-        'layout': {},
         'paint': {
           'line-color': 'red',
           'line-width': 2,
