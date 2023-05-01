@@ -7,15 +7,18 @@ if (!fs.existsSync(dir)){
 }
 
 // Accept arg so we can target the Plantiler-created tileset
-const args = process.argv.slice(2)
-const location = args[0]
+// const args = process.argv.slice(2)
+// const location = args[0]
 
 // Prep final config
 const exportData = {
   data: {
-    [location]: {
-      "mbtiles": `/data/${location}.mbtiles`
+    planet: {
+      "mbtiles": `/data/planet.mbtiles`
     }
+    // [location]: {
+    //   "mbtiles": `/data/${location}.mbtiles`
+    // }
   },
   styles: {}
 }
