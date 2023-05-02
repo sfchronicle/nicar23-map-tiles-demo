@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "name": "Green Tennessee",
+  "name": "Green Planet",
   "metadata": {"maputnik:renderer": "mbgljs"},
   "center": [-122.26406952238165, 37.85440370582789],
   "zoom": 12.492938906884522,
@@ -9,7 +9,7 @@
   "sources": {
     "sfc": {
       "type": "vector",
-      "url": "https://nicar23-map-tiles.fly.dev/data/tennessee.json"
+      "url": "https://nicar23-map-tiles.fly.dev/data/planet.json"
     }
   },
   "glyphs": "http://fonts.openmaptiles.org/{fontstack}/{range}.pbf",

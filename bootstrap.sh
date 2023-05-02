@@ -4,11 +4,15 @@
 # Set location (must be a valid geofabrik location -> https://download.geofabrik.de/)
 # Use "planet" to generate tiles of the whole world but make sure you have 85 GB of drive storage and a powerful CPU first!
 # location="tennessee"
-
+cd /data
 # Get planet data if we don't have it
 if [ ! -f /data/planet.mbtiles ];then
-  echo "DOWNLOADING PLANET"
-  wget -O /data/planet.mbtiles https://sfc-project-files.s3.amazonaws.com/planet.mbtiles
+  echo "DOWNLOADING PLANET FRESH"
+  wget --timeout=0 --waitretry=0 --tries=5 --retry-connrefused https://sfc-project-files.s3.amazonaws.com/planet.mbtiles
+  echo "FINISHED DOWNLOAD"
+else
+  echo "DOWNLOADING PLANET CONTINUE"
+  wget --continue --timeout=0 --waitretry=0 --tries=5 --retry-connrefused https://sfc-project-files.s3.amazonaws.com/planet.mbtiles
   echo "FINISHED DOWNLOAD"
 fi
 
